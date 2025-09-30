@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>黑白電影介紹（單頁範例）</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Noto Sans TC", Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      scroll-behavior: smooth;
+    }
+
+    /* 首頁 banner */
+    #home-banner {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(to bottom, #000000, #555555, #aaaaaa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    #home-banner h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    /* 導覽列 */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(20,20,20,0.95);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    nav .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 56px;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 18px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 14px;
+      display: inline-block;
+      border-radius: 6px;
+      transition: background-color 200ms, color 200ms, transform 120ms;
+      font-weight: 600;
+    }
+    nav a:hover {
+      background-color: #fff;
+      color: #222;
+      transform: translateY(-2px);
+    }
+    nav a.active {
+      background-color: #ffd9d9;
+      color: #111;
+    }
+
+    /* section 間距 */
+    section {
+      margin: 36px 0;
+      scroll-margin-top: 72px; /* 避免 sticky nav 遮住 */
+    }
+
+    /* section banner */
+    .section-banner {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(to bottom, #111111, #666666, #cccccc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    /* 內容灰底 */
+    .content-wrapper {
+      width: 100%;
+      background: #e9e9e9;
+      padding: 32px 0;
+      box-sizing: border-box;
+    }
+
+    /* 中間內容矩形 */
+    .content {
+      max-width: 840px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 22px 28px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      border-radius: 6px;
+    }
+    .content h2 { margin-top: 0; }
+    .content p { margin: 0 0 12px 0; line-height: 1.7; }
+
+    @media (max-width: 720px) {
+      #home-banner { height: 200px; }
+      .section-banner { height: 220px; font-size: 1.4rem; }
+      .content { padding: 18px; margin: 0 12px; }
+      nav .nav-inner { height: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 首頁 Banner -->
+  <div id="home-banner" aria-label="網站首頁橫幅">
+    <h1>黑白電影的魅力</h1>
+  </div>
+
+  <!-- 導覽列 -->
+  <nav aria-label="主要導覽">
+    <div class="nav-inner">
+      <ul>
+        <li><a href="#home-banner" class="nav-link">Home</a></li>
+        <li><a href="#section1" class="nav-link">介紹 1</a></li>
+        <li><a href="#section2" class="nav-link">介紹 2</a></li>
+        <li><a href="#section3" class="nav-link">介紹 3</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Section 1 -->
+  <section id="section1">
+    <div class="section-banner">黑白電影承載的起點</div>
+    <div class="content-wrapper">
+      <div class="content">
+        <p>
+          黑白電影承載了電影藝術的起點。雖然缺乏色彩，但以光影對比與細膩的表演展現獨特氛圍。
+          20世紀初的無聲電影，觀眾透過演員誇張的肢體語言與配樂，體驗原始戲劇張力。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="section2">
+    <div class="section-banner">有聲以後的經典作品</div>
+    <div class="content-wrapper">
+      <div class="content">
+        <p>
+          進入有聲時代後，許多經典作品如《公民凱恩》與《大國民》，仍以黑白影像捕捉人性的複雜。
+          光影運用與場景構圖，使黑白電影成為視覺藝術表現，以強烈對比製造張力與情緒。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="section3">
+    <div class="section-banner">黑白電影的當代意義</div>
+    <div class="content-wrapper">
+      <div class="content">
+        <p>
+          如今彩色電影成為主流，但黑白電影仍具獨特藝術價值。它提醒我們：色彩之外，光影也能訴說動人故事。
+          許多導演在特定情境下仍選擇黑白，以強化情緒或追求復古美學。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // 滾動時 active nav
+    const navLinks = document.querySelectorAll('nav a.nav-link');
+    const sections = [
+      document.getElementById('home-banner'),
+      document.getElementById('section1'),
+      document.getElementById('section2'),
+      document.getElementById('section3')
+    ];
+
+    window.addEventListener('scroll', () => {
+      const offset = 70;
+      let current = sections[0].id;
+      for (let s of sections) {
+        if (s.getBoundingClientRect().top <= offset) current = s.id;
+      }
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href').slice(1) === current));
+    });
+  </script>
+
+</body>
+</html>
