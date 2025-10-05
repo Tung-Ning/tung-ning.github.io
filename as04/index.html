@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>豬的一生</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* 首圖 */
+    #first {
+      background-image: url("assets/01.png");
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 200vh;
+      filter: grayscale(100%);
+      transition: filter 0.2s linear;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    /* 標題橫幅 */
+    #first h1 {
+      color: white;
+      font-size: 3rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      width: 100%;
+      text-align: right;
+      padding: 20px 40px;
+      margin: 0;
+    }
+
+    /* Section */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .section h2,
+    .section p {
+      padding: 0 15px;
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+    }
+
+    .bg-light {
+      background-color: #f8f9fa !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 首圖 -->
+  <div id="first" class="container-fluid">
+    <h1>豬的一生</h1>
+  </div>
+
+  <!-- Section 1 左圖右文 -->
+  <div class="container section">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="assets/02.png" alt="圖1">
+      </div>
+      <div class="col-md-6">
+        <h2>小豬學吃飯</h2>
+        <p>一群剛斷奶的小豬，也稱為「保育豬」，被飼養在乾淨的欄舍中，圍在自動餵食器旁專心進食。這個階段的小豬正逐漸適應離乳後的生活，學習從固體飼料中獲取營養。群體飼養有助於牠們建立社交行為，同時保持活力與健康。照片呈現出豬隻成長初期的自然互動與農場日常。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 右圖左文 -->
+  <div class="container section bg-light">
+    <div class="row align-items-center flex-md-row-reverse">
+      <div class="col-md-6">
+        <img src="assets/03.png" alt="圖2">
+      </div>
+      <div class="col-md-6">
+        <h2>豬隻成長中</h2>
+        <p>體型較大的肉豬，被安置在寬敞、通風良好的豬舍中。這些豬隻進入育成階段，活動空間較大，飼養環境也更接近出欄前的條件。從牠們的體態與毛色可見健康狀況良好，充分展現現代化畜舍在衛生與動物福利上的重視。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3 左圖右文 -->
+  <div class="container section">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="assets/04.png" alt="圖3">
+      </div>
+      <div class="col-md-6">
+        <h2>人豬互動</h2>
+        <p>一位豬農正引導一頭豬移動至另一個區域，顯示飼養過程中人與動物的互動。處理過程講求耐心與技巧，確保豬隻安全、不受驚嚇。這也反映出飼主在日常管理中對動物行為的理解與尊重。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4 右圖左文 -->
+  <div class="container section bg-light">
+    <div class="row align-items-center flex-md-row-reverse">
+      <div class="col-md-6">
+        <img src="assets/05.png" alt="圖4">
+      </div>
+      <div class="col-md-6">
+        <h2>生命的循環</h2>
+        <p>豬隻被運送上卡車，準備前往肉品加工廠。運輸過程遵循動物福利與安全規範，車廂保持通風與適溫。這一階段象徵飼養循環的結尾，也提醒人們每一項食品都源自完整的生產鏈與人力付出。</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 首圖黑白→彩色
+    window.addEventListener("scroll", function () {
+      const first = document.getElementById("first");
+      let scrollTop = window.scrollY;
+      let windowHeight = window.innerHeight;
+      let ratio = Math.min(scrollTop / windowHeight, 1);
+      first.style.filter = `grayscale(${100 - ratio * 100}%)`;
+    });
+  </script>
+
+  <!-- 結尾區塊 Full Width & 100vh -->
+   <div class="container-fluid" style="height:100vh; width:100%; background-color:#333; display:flex; align-items:center; justify-content:center; color:white; text-align:center; padding:20px;">
+     <div>
+       <h2>網頁製作過程說明</h2>
+       <br>
+       <p>本網頁的圖片由Nano Banana生成，指令為養殖場中的豬的一生，並下指令修改豬隻的品種。</p>
+       <p>網頁部分以Background-fixed呈顯首圖，由黑白過渡到彩色，象徵豬隻誕生。</p>
+       <p>內文以簡單的css呈現，並由Chatgpt協助生成內文，修改為圖文交錯效果。</p>
+   </div>
+</div>
+</body>
+</html>
