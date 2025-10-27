@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>現實世界的尋寶者—定向越野</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Noto Sans TC", sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+  }
+
+  .hero {
+    background-image: url("assets/orienteering-header.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  }
+
+  .hero h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  section {
+    min-height: 120vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+  }
+
+  .card-container {
+    perspective: 1000px;
+  }
+
+  .flip-card {
+    width: 400px;
+    height: 250px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: flipCard both linear;
+    animation-timeline: view();
+    animation-range: entry 25% cover 50%;
+  }
+
+  .flip-front, .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    overflow: hidden;
+  }
+
+  .flip-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+  }
+
+  .flip-back {
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    transform: rotateY(180deg);
+  }
+
+  @keyframes flipCard {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(180deg); }
+  }
+
+  .focus-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 12%;
+    background: white;
+    transition: filter 0.6s ease, opacity 0.6s ease;
+    animation: focusSection both ease-out;
+    animation-timeline: view();
+    animation-range: exit 0% exit 60%;
+  }
+
+  .focus-section:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+  @keyframes focusSection {
+    from {
+      filter: brightness(1);
+      opacity: 1;
+    }
+    to {
+      filter: brightness(0.5);
+      opacity: 0.6;
+    }
+  }
+
+  .focus-section h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+  }
+
+  .focus-section p {
+    line-height: 1.9;
+    max-width: 900px;
+    text-align: justify;
+    font-size: 1.05em;
+  }
+
+  /* 🔹新增：滾動底線動畫樣式 */
+  span.highlight {
+    position: relative;
+    transition: color 0.4s ease;
+  }
+
+  span.highlight::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: #0078d7;
+    transition: width 0.6s ease;
+  }
+
+  span.highlight.active::after {
+    width: 100%;
+  }
+
+  span.highlight.active {
+    color: #0078d7;
+  }
+
+</style>
+</head>
+
+<body>
+  <header class="hero">
+    <h1>現實世界的尋寶者—定向越野</h1>
+  </header>
+
+  <section>
+    <div class="card-container">
+      <div class="flip-card">
+        <div class="flip-front">
+          <img src="assets/orienteering-front.jpg" alt="定向越野運動員">
+        </div>
+        <div class="flip-back">
+          <h3>什麼是定向越野？</h3>
+          <p>定向越野是一項結合體能與導航能力的戶外運動。選手需依地圖與指北針，在自然地形中找出各個檢查點，並以最有效率的路線完成全程。這項運動強調「自主決策」與「空間判斷」，讓每位參賽者都成為現實世界的冒險者。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ 每段各選一句加span -->
+  <section class="focus-section">
+    <h2>1. 地圖與指北針的完美結合</h2>
+    <p>定向越野的靈魂，在於對地圖的理解與對方向的掌握。地圖上密密麻麻的等高線與符號，記錄著山丘、溪谷與人造設施的位置。<span class="highlight">指北針不僅是輔助工具，更是選手在陌生地形中保持冷靜的關鍵夥伴。</span>每一次轉動，都意味著一次重新定位；每一次對照地形，都是腦中建立空間模型的過程。</p>
+  </section>
+
+  <section class="focus-section">
+    <h2>2. 尋找檢查點的策略思維</h2>
+    <p>定向越野不只是體力競賽，更是策略遊戲。選手必須根據地形特徵，選擇最佳路線：是繞遠路沿著山腰行進，還是冒險翻越森林直線前進？<span class="highlight">在時間壓力下做出每個判斷，考驗的不只是方向感，更是決策與風險評估能力。</span>許多高手甚至能在奔跑中同時思考與修正策略，這使得比賽充滿變數與智性之美。</p>
+  </section>
+
+  <section class="focus-section">
+    <h2>3. 多樣化的比賽場地</h2>
+    <p>定向越野可在森林、校園、公園甚至城市街區舉辦。森林賽強調讀圖與自然地形判斷，城市賽則挑戰選手在複雜道路中的快速反應。<span class="highlight">現今還出現結合科技的「Sprint」賽事，讓參賽者在短距離內體驗瞬息萬變的判斷壓力。</span>正因如此，定向越野不受限於環境，從山林到都會皆可進行，是真正屬於每個人的運動。</p>
+  </section>
+
+  <section class="focus-section">
+    <h2>4. 尋寶者的精神</h2>
+    <p>在定向越野中，沒有人能完全依賴他人。每位選手都必須獨立閱讀地圖、做出選擇，並承擔結果。<span class="highlight">這種「自我導向」的精神，使運動超越競技本身，成為一次關於探索與自信的旅程。</span>當選手穿越樹林、越過溪谷、抵達終點時，那份成就感並非來自擊敗他人，而是源於對自我極限的突破與理解。</p>
+  </section>
+
+  <footer style="
+    height: 80vh;
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  ">
+    <h2>定向越野，不只是運動，更是一場自我探索。</h2>
+    <p style="opacity: 0.8;">— The End —</p>
+  </footer>
+
+  <!-- 🔹新增：JS捲動底線觸發 -->
+  <script>
+    const highlights = document.querySelectorAll('span.highlight');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, { threshold: 0.6 });
+
+    highlights.forEach(span => observer.observe(span));
+  </script>
+</body>
+</html>
