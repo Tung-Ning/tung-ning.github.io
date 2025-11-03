@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>把海洋變陸地—什麼是填海造陸？</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	overflow-x: hidden;
+	font-family: "Noto Sans TC", sans-serif;
+}
+
+/* ---------- 前半段：圖片進度區 ---------- */
+.hero {
+	height: 100vh;
+	background: #b3e5fc;
+	color: #003c5f;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	text-align: center;
+}
+.hero h1 {
+	font-size: 3rem;
+	font-weight: bold;
+	background: rgba(255, 255, 255, 0.6);
+	padding: 1rem 2rem;
+	border-radius: 12px;
+}
+.hero p {
+	margin-top: 1rem;
+	opacity: 0.8;
+}
+
+#scroll-zone {
+	height: 400vh;
+	position: relative;
+}
+#outer {
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	background-image: url(assets/old.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	overflow: hidden;
+}
+#statusbar {
+	width: 0;
+	height: 100vh;
+	background-image: url(assets/new.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	transition: width 0.15s linear;
+}
+
+/* ---------- 後半段：水平捲動區 ---------- */
+.text-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+	color: white;
+	padding: 2rem; /* 加點內距避免文字貼邊 */
+	text-align: left; /* 文字靠左更好閱讀 */
+	flex-direction: column;
+}
+
+.scroll-container {
+	height: 800vh; /* 足夠長，能滾完四個水平區塊 */
+	position: relative;
+}
+
+.horizontal-section {
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	width: 400vw; /* 四個100vw的區塊 */
+	display: flex;
+	flex-direction: row;
+	transition: transform 0.1s linear;
+}
+
+.horizontal-item {
+	width: 100vw;
+	height: 100vh;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 藍綠系色彩搭配 */
+.bg-blue-light { background-color: #90caf9; }    /* 輕柔淺藍 */
+.bg-blue-medium { background-color: #42a5f5; }   /* 中藍 */
+.bg-green-light { background-color: #a5d6a7; }   /* 輕柔淺綠 */
+.bg-green-medium { background-color: #66bb6a; }  /* 中綠 */
+
+/* ---------- Footer ---------- */
+footer {
+	height: 60vh;
+  background: #264653;  /* 深藍綠色調 */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;  /* 字體不太大 */
+  padding: 1.5rem;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<!-- Hero / 首頁區 -->
+<div class="hero">
+	<h1>把海洋變陸地—什麼是填海造陸？</h1>
+	<p>捲動以觀察海岸的變遷</p>
+</div>
+
+<!-- 圖片進度條區 -->
+<div id="scroll-zone">
+	<div id="outer">
+		<div id="statusbar"></div>
+	</div>
+</div>
+
+<!-- 水平捲動開始 -->
+<div class="scroll-container">
+	<div class="horizontal-section">
+		<div class="horizontal-item bg-blue-light text-center">
+			<h2>填海造陸是什麼</h2>
+			<p>將海域填平，將海洋轉變為陸地，通常用於城市擴展、工業用地或港口建設。</p>
+		</div>
+		<div class="horizontal-item bg-green-light text-center">
+			<h2>填海材料與技術</h2>
+			<p>常見填海材料包括沙土、礫石和淤泥，並使用圍堰及排水技術確保填築區域穩定安全。</p>
+		</div>
+		<div class="horizontal-item bg-blue-medium text-center">
+			<h2>環境影響</h2>
+			<p>填海工程可能影響海洋生態系統、水流與沉積物分布，需經過環境評估與監控。</p>
+		</div>
+		<div class="horizontal-item bg-green-medium text-center">
+			<h2>哪裡運用此技術？</h2>
+			<p>全球許多城市如香港、荷蘭及新加坡均有大型填海工程，推動城市發展與經濟成長。</p>
+		</div>
+	</div>
+</div>
+
+<footer>填海造陸，塑造未來的陸地與希望？</footer>
+
+
+<script>
+// ---------- 前半段圖片進度條 ----------
+$(window).on("scroll", function () {
+	const $zone = $("#scroll-zone");
+	const zoneTop = $zone.offset().top;
+	const zoneHeight = $zone.height();
+	const winW = $(window).width();
+	const scrollTop = $(window).scrollTop();
+
+	if (scrollTop >= zoneTop && scrollTop <= zoneTop + zoneHeight) {
+		const progress = (scrollTop - zoneTop) / zoneHeight;
+		const newWidth = Math.min(winW * progress * 1.5, winW);
+		$("#statusbar").css({ width: newWidth });
+	} else if (scrollTop < zoneTop) {
+		$("#statusbar").css({ width: 0 });
+	} else {
+		$("#statusbar").css({ width: winW });
+	}
+});
+
+// ---------- 後半段水平捲動 ----------
+const $scrollContainer = $(".scroll-container");
+const containerOffsetTop = $scrollContainer.offset().top;
+const containerHeight = $scrollContainer.outerHeight() - $(window).height();
+const $horizontalSection = $(".horizontal-section");
+
+$(window).on("scroll", function () {
+	const scrolled = $(window).scrollTop();
+	let scrollPercentage = 0;
+	if (
+		scrolled > containerOffsetTop &&
+		scrolled < containerOffsetTop + containerHeight
+	) {
+		scrollPercentage = (scrolled - containerOffsetTop) / containerHeight;
+	} else if (scrolled >= containerOffsetTop + containerHeight) {
+		scrollPercentage = 1;
+	}
+
+	const maxScroll = $horizontalSection.outerWidth() - $(window).width();
+	const horizontalScroll = scrollPercentage * maxScroll;
+
+	$horizontalSection.css("transform", `translateX(-${horizontalScroll}px)`);
+});
+</script>
+
+</body>
+</html>
