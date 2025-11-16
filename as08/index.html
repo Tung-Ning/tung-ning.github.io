@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Border: Video Storytelling Practice</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			body { background: #000; color: #fff; }
+			.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+			.hero .container { text-align: center; }
+			.title { font-weight: 700; letter-spacing: .02em; }
+			.subtitle { opacity: .85; }
+			/* content readability */
+			.article-content { line-height: 1.9; font-size:1.05rem; }
+			/* video grid sizing */
+			.video-grid { display: grid; grid-template-columns: repeat(2,1fr); gap:12px; max-width:520px; height:100vh; margin:0 auto; }
+			.video-grid video { width:100%; height:50vh; object-fit:cover; }
+			/* ensure sticky video column stays fixed during page scroll */
+			.video-column { position: relative; }
+			.video-column .position-sticky { top: 0; height: 100vh; display:flex; align-items:center; justify-content:center; }
+			/* background video sections */
+			.bg-video-section { position:relative; min-height:70vh; overflow:hidden; }
+			.bg-video-section .bg-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+			.bg-video-section .bg-overlay { position:relative; z-index:2; display:flex; align-items:center; min-height:70vh; }
+			.overlay-card { background: rgba(0,0,0,0.5); padding:2rem; border-radius:6px; }
+			.overlay-card.narrow { max-width:640px; background: rgba(0,0,0,0.5); }
+			/* make the last four sections consistent height */
+			#vb-1, #vb-5, #vb-6, #vb-7 { min-height:120vh; }
+			#vb-1 .bg-overlay, #vb-5 .bg-overlay, #vb-6 .bg-overlay, #vb-7 .bg-overlay { min-height:120vh; }
+			#vb-1 .bg-video, #vb-5 .bg-video, #vb-6 .bg-video, #vb-7 .bg-video { height:120vh; }
+			/* overlay alignment helpers */
+			.overlay-right { margin-left: auto; }
+		</style>
+	</head>
+	<body>
+		<main class="hero">
+			<div class="container">
+				<h1 class="display-4 title">Border: Video Storytelling Practice</h1>
+				<p class="lead subtitle mt-3">An exploration of narrative through location-based video panels.</p>
+			</div>
+		</main>
+
+		<!-- onboarding section (second) -->
+		<section class="container-fluid py-5" style="background:#fff;color:#111;min-height:100vh;">
+			<div class="row">
+				<div class="col-md-6">
+					<!-- left content area: page will scroll normally -->
+					<article class="article-content" style="max-width:900px;margin-right:2rem;">
+						<h2 class="text-dark">About this project</h2>
+						<p>
+							This project experiments with scroll-driven storytelling using short documentary clips. The left panel presents four video tiles in a 2x2 grid, kept visible via a sticky container as the user scrolls the right-hand text area which is 200vh tall. The aim is to let the viewer read contextual information while the video grid provides ambient visual narrative cues.
+						</p>
+						<p>
+							Design notes: videos are muted by default to allow autoplay in most browsers. They loop to provide continuous motion. The text area provides deeper context, including credits, sources, and editorial notes.
+						</p>
+						<p>
+							Credits: video clips from public news footage used for demo purposes.
+						</p>
+						<p>
+							Interaction: you can scroll the left column to read. The right grid remains sticky and centered vertically within the viewport.
+						</p>
+					</article>
+				</div>
+				<div class="col-md-6 video-column">
+					<!-- right sticky video grid (now static) -->
+						<div class="position-sticky d-flex justify-content-center">
+							<div class="video-grid">
+								<video muted loop playsinline preload="auto" src="assets/01.mp4"></video>
+								<video muted loop playsinline preload="auto" src="assets/02.mp4"></video>
+								<video muted loop playsinline preload="auto" src="assets/03.mp4"></video>
+								<video muted loop playsinline preload="auto" src="assets/04.mp4"></video>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- long video section (third) -->
+		<section class="bg-video-section" id="vb-1">
+			<video class="bg-video" autoplay muted loop playsinline preload="auto" src="assets/01.mp4"></video>
+			<div class="bg-overlay container">
+				<div class="overlay-card narrow" style="max-width:640px;">
+					<h2 class="display-5 text-white">邊境故事</h2>
+					<p class="text-white">
+						探索美墨邊境的複雜現實，了解那些跨越邊境的人們的故事。
+					</p>
+					<p class="text-white small">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					</p>
+					<p class="text-white small">
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+					</p>
+					<p class="text-white small">
+						Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+					</p>
+					<p class="text-white small">
+						Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+					</p>
+					<p class="text-white small">
+						At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+					</p>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- copied third section as fourth (移民之路) -->
+		<section class="bg-video-section" id="vb-5">
+			<video class="bg-video" autoplay muted loop playsinline preload="auto" src="assets/02.mp4"></video>
+			<div class="bg-overlay container">
+				<div class="overlay-card narrow overlay-right" style="max-width:640px;">
+					<h2 class="display-5 text-white">移民之路</h2>
+					<p class="text-white">
+						跟隨移民者的腳步，體驗他們艱辛的旅程和對未來的希望。
+					</p>
+					<p class="text-white small">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vehicula ligula vitae mi dictum, in facilisis purus hendrerit. Proin tincidunt velit ut risus dignissim, a commodo turpis molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
+					</p>
+					<p class="text-white small">
+						Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada. Pellentesque in ipsum id orci porta dapibus.
+					</p>
+					<p class="text-white small">
+						Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vivamus suscipit tortor eget felis porttitor volutpat. Sed porttitor lectus nibh. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
+					</p>
+					<p class="text-white small">
+						Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit.
+					</p>
+					<p class="text-white small">
+						Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- new fifth section (邊境牆) copied from third, uses 03.mp4 -->
+		<section class="bg-video-section" id="vb-6">
+			<video class="bg-video" autoplay muted loop playsinline preload="auto" src="assets/03.mp4"></video>
+			<div class="bg-overlay container">
+				<div class="overlay-card narrow" style="max-width:640px;">
+					<h2 class="display-5 text-white">邊境牆</h2>
+					<p class="text-white">見證邊境牆的建設過程，思考這道牆對兩國關係的影響。</p>
+					<p class="text-white small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum.</p>
+					<p class="text-white small">Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+					<p class="text-white small">Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.</p>
+					<p class="text-white small">Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+					<p class="text-white small">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- final section (新開始) copied from fourth, uses 04.mp4 -->
+		<section class="bg-video-section" id="vb-7">
+			<video class="bg-video" autoplay muted loop playsinline preload="auto" src="assets/04.mp4"></video>
+			<div class="bg-overlay container">
+				<div class="overlay-card narrow overlay-right" style="max-width:640px;">
+					<h2 class="display-5 text-white">新開始</h2>
+					<p class="text-white">在邊境的另一邊，人們開始新的生活，尋找屬於自己的機會。</p>
+					<p class="text-white small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. Nunc posuere purus rhoncus pulvinar aliquam. Ut aliquet tristique nisl vitae volutpat. Nulla aliquet porttitor venenatis. Donec a dui et dui fringilla consectetur id nec massa.</p>
+					<p class="text-white small">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+					<p class="text-white small">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+					<p class="text-white small">Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+					<p class="text-white small">Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+				</div>
+			</div>
+		</section>
+
+        
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			// Play videos only when the onboarding video grid is visible
+			document.addEventListener('DOMContentLoaded', function () {
+				const videoGrid = document.querySelector('.video-grid');
+				const videos = document.querySelectorAll('.video-grid video');
+				if (!videoGrid) return;
+				const io = new IntersectionObserver(entries => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
+							videos.forEach(v => { v.play().catch(()=>{}); });
+						} else {
+							videos.forEach(v => { v.pause(); v.currentTime = 0; });
+						}
+					});
+					}, { threshold: [0, 0.5, 1] });
+				io.observe(videoGrid);
+			});
+		</script>
+	</body>
+</html>
